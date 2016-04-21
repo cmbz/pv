@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<title>Practical Data* Visualization with JavaScript</title>
+<!-- Include external files and scripts here -->
+<link rel="stylesheet" type="text/css" href="index.css"/>
+
+</head>
+
+<body>
+<!-- Banner -->
+<div id="banner">
+	<h1>Practical Data* Visualization with JavaScript</h1>
+	<h2>When, *What, and How</h2>
+</div>
+
+<!--  The main container for all views -->
+<div class="container">
+
+<h3>About the Presentation</h3>
+
+<blockquote>
+<p>This talk introduces a methodology intended to help you decide:
+<ul>
+<li>When to use programming techniques to visualize your data (and when to choose alternate means, e.g. Excel Pivot Charts);</li>
+<li>What data, or aspects of your data to render visually, and</li>
+<li>How best to use the programming tools at your disposal to visualize your data.</li>
+</ul>
+</p>
+
+<p>The hands-on programming examples will use JavaScript and emphasize user interactivity, 
+however the decision-framework is language agnostic. Examples will also involve data of interest to library audiences. Topics covered include:
+<ul>
+	<li>Workflows
+		<ul>
+			<li>Developing data analysis and visualization workflows</li>
+		</ul>
+	</li>
+	<li>Working with data: 
+		<ul>
+			<li>Data structures and data modeling;</li>
+			<li>What kinds of library data and circumstances make for good visualization candidates;</li>
+			<li>Strategies for working with data from different sources.</li>
+		</ul>
+	</li>
+	<li>Visual presentation:
+		<ul>
+			<li>Visualization techniques, what and when to use them;</li>
+			<li>Heuristics for creating good visualizations.</li>
+		</ul>
+	</li>
+</ul>
+</blockquote>
+
+<p>A comprehensive <a target="_blank" href="readme.html">Readme</a> file for the code that support the examples is available: 
+<a target="_blank" href="readme.html">here</a>.</p>
+<hr/>
+
+<h3>Presentation Examples</h3>
+
+<h4>Towards a Collections & Content Development Strategic Plan Examples</h4>
+
+<blockquote>
+<h5>About</h5>
+
+<p>In June 2012, the Affinity Group Heads were charged with providing the Harvard Library Board with an analysis of the current and likely future 
+state of collection development in institutions of higher education and culture, including best practices and trends based on data gathered internally and externally.</p>
+
+<p>In addition, approximately 105 people attended 8 Harvard-wide community discussion sessions. Additional feedback was gathered from other sources as well, 
+including several affinity group meetings, committee meetings involving members of the Harvard faculty, and online fora. 
+During the community engagement process, participants asked questions and made comments and recommendations about a number of topics pertaining to the draft 
+document.</p>
+
+<p>These examples depict a variety of data pertaining to Drivers, Trends, and Community Engagement collected during the project.</p>
+
+<h5>Characteristics</h5>
+<ul>
+	<li>Original data collected in Word and Excel, then categorized by hand</li>
+	<li>Data exported from Excel in TSV</li>
+	<li>Data anonymized using <a href="https://en.wikipedia.org/wiki/Node.js">Node.js</a> scripts</li>
+	<li>Anonymized data written to JSON</li>
+	<li>HTML file reads in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> using <a href="https://en.wikipedia.org/wiki/Ajax_%28programming%29">AJAX</a></li>
+	<li><a href="https://en.wikipedia.org/wiki/Bubble_chart">Bubble charts</a>: A bubble chart is a type of chart that displays three dimensions of data. Each entity with its triplet (v1, v2, v3) of associated data is plotted as a disk that expresses two of the vi values through the disk's xy location and the third through its size. 
+		Bubble charts can facilitate the understanding of social, economical, medical, and other scientific relationships.</li>
+	<li><a href="https://en.wikipedia.org/wiki/Bar_chart">Bar charts</a href>: A bar chart or bar graph is a chart that presents grouped data with rectangular bars with lengths proportional to the values that they represent. 
+		The bars can be plotted vertically or horizontally. A vertical bar chart is sometimes called a column bar chart.</li>
+</ul>
+
+<h5>Examples</h5>
+<ul>
+	<li><a target="_blank" href="examples/tccds/tccds_drivers.html">Drivers</a>: visualizations depicting information about drivers of collecting practices</li>
+	<li><a target="_blank" href="examples/tccds/tccds_trends.html">Trends</a>: visualizations depicting information about trends in collecting practices</li>
+	<li><a target="_blank" href="examples/tccds/tccds_engagement.html">Engagement Data</a>: visualizations depicting comments from the community and others about trends/issues around collecting.</li>	
+</ul>
+
+<h5>Libraries</h5>
+<p>The following JavaScript libraries are used in the examples.</p>
+<ul>
+	<li><a href="http://jquery.com/">jQuery</a>: a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, 
+		event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.</li>
+	<li><a href="http://www.jqplot.com/">jqPlot</a>: jqPlot is a plotting and charting plugin for the jQuery Javascript framework. 
+		jqPlot produces beautiful line, bar and pie charts with many features.</li>
+	<li><a href="https://datatables.net/">DataTables</a>: DataTables is a plug-in for the jQuery Javascript library. 
+		It is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table.</li>
+	<li><a href="http://stringjs.com/">string.js</a>: is a lightweight JavaScript library for the browser or for Node.js that provides extra String methods.</li>
+	<li><a href="http://underscorejs.org/">underscore.js</a>: Underscore is a JavaScript library that provides a whole mess of 
+		useful functional programming helpers without extending any built-in objects. Underscore is also available for NodeJS</li>
+	<li><a href="https://nodejs.org/en/">Node.js</a>: Console data transformation and output console applications are written in Node.js. 
+		Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.</li>
+</ul>
+
+</blockquote>
+<hr/>
+
+<h4>The Colonial North American Project</h4>
+
+<blockquote>
+
+<h5>About</h5>
+
+<h4>Project Mission</h4>
+
+<p>Mission
+The on-going, multiyear <a href="http://colonialnorthamerican.library.harvard.edu/">Colonial North American Project at Harvard University</a> (CNA) makes available, online and free of charge, the riches from Harvard’s vast collections 
+of archival material from the seventeenth and eighteenth centuries. Scattered through 14 repositories, these documents reveal a great deal about topics such as education, 
+trade, finance, and religion in the United States and about the origins of the U.S. itself.
+</p>
+
+<div id="illustration">
+<img src='examples/data/cna/samuel_griffin.png'></img>
+</div>
+<p>Figure 1: Samuel Griffin, mathematical manuscript, 1783-1784; HUC 8784.353, Harvard University Archives</p>
+
+<h4>Background</h4>
+<p>Between 2011 and 2012, a survey was conducted to gather basic data on the 17th and 18th century manuscripts and archives pertaining to 
+North America in Harvard’s libraries. This work, supported by the Arcadia Fund, was undertaken with an eye to future digitization and towards 
+providing greater accessibility of Harvard’s riches to the world. The survey uncovered 1,654 collections of Colonial-era materials in 12 libraries 
+and archives. Contemporaneously, a project was undertaken and completed to process the collections that were identified at the Harvard University Archives.
+Following the survey, in-scope collections were discovered at two additional libraries.
+</p>
+
+<h4>Progress to Date</h4>
+
+<p>As of April 1, 2016, the Colonial North American Project had digitized <em>5,956</em> unique described items (<em>153,319</em> images, approximately <em>183,982</em> pages) 
+from collections at nine Harvard repositories: Andover-Harvard Theological Library, Baker Library, Gutman Library, Houghton Library, Loeb Music Library, 
+the Law Library, Tozzer Library, Countway Library, and the Harvard University Archives. </p>
+
+<p>This current phase of CNA will run from January 2014 to December 2016. Work is continuing at the University Archives, Houghton Library, Andover-Harvard 
+Theological Library, and Baker Library. The project is also embarking upon the processing, stabilization, and digitization of new collections at 
+Schlesinger Library and the Countway Library of Medicine, and other libraries such as the Map Library and the Library of Historical Scientific Instruments 
+having a smaller number of in-scope collections.</p>
+
+<h5>Characteristics</h5>
+<ul>
+	<li>Multiple sources of original data in several formats:
+		<ol>
+			<li>MS-Access: CNA database containing data about 17th and 18th century manuscript collections compiled by a surveying archivist</li>
+			<li>TSV: Tab-delimited output of custom Node.js software program that uses METS files from DRS 1 to generate an inventory of all digital objects
+				associated with the project</li>
+			<li>MS-Access: output of database query that combines TSV digital inventory and CNA database</li>
+		</ol>
+	</li>
+	<li>Complex Node.js console application to process TSV output of MS-Access query and general multiple JSON datasets</li>
+	<li><a href="https://en.wikipedia.org/wiki/Bar_chart">Bar charts</a href>: A bar chart or bar graph is a chart that presents grouped data with rectangular bars with lengths proportional to the values that they represent. 
+		The bars can be plotted vertically or horizontally. A vertical bar chart is sometimes called a column bar chart.</li>
+	<li><a href="https://en.wikipedia.org/wiki/Radar_chart">Radar charts</a>: (also spider charts) A radar chart is a graphical method of displaying multivariate data in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point. 
+	The relative position and angle of the axes is typically uninformative.</li>
+</ul>
+
+<h5>Examples</h5>
+<ul>
+	<li><a target="_blank" href="examples/cna/cna_distribution_by_date.html">Distribution by Date</a>: This plot illustrates the number of unique, significant dates associated with digitized items. For most collections, an interval was identified by the surveyor indicating an earliest and latest date for the collection. Each digitized item will be associated with a date (or date range) somewhere within that interval. 
+		This plot does not handle date ranges, but instead assigns a single date (the earliest) for ease of plotting.</li>
+	<li><a target="_blank" href="examples/cna/cna_distribution_by_language.html">Distribution by Language</a>: This plot shows the frequency of languages associated with collections having digitized content.</li>
+	<li><a target="_blank" href="examples/cna/cna_distribution_by_region.html">Distribution by Region</a>: This plot shows the frequency of regions identified in the survey associated with collections having digitized content. 
+		This visualization uses the <em>HTML5 canvas element</em>.</li>
+	<li><a target="_blank" href="examples/cna/cna_distribution_by_subject.html">Distribution by Subject</a>: This plot shows the frequency of subject areas identified in the 
+		survey associated with collections having digitized content. This visualization uses the <em>HTML5 canvas element</em>.</li>	
+	<li><a target="_blank" href="examples/cna/cna_distribution_by_narrow_subject.html">Distribution by Narrow Subject</a>: In addition to the primary, broad survey subject 
+		areas shown above, the surveyor also identified some special, more narrow, subjects as well. This plot shows the frequency of these narrow subject areas identified 
+		in the survey associated with collections having digitized content. This visualization uses the <em>HTML5 canvas element</em> and shows some of the limitations
+		of radar charts.</li>	
+	<li><a target="_blank" href="examples/cna/cna_geocode_regions.html">Google Maps API - Primary Region</a>: Illustration using the Google Maps API of the region data. 
+		Requires a Google Maps API key, and therefore may not render properly unless you supply a valid one for your server.</li>	
+</ul>
+
+<h5>Libraries</h5>
+<p>The following JavaScript libraries are used in the examples.</p>
+<ul>
+	<li><a href="https://developers.google.com/maps/">Google Maps API</a></li>
+	<li><a href="http://jquery.com/">jQuery</a>: a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, 
+		event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.</li>
+	<li><a href="http://www.jqplot.com/">jqPlot</a>: jqPlot is a plotting and charting plugin for the jQuery Javascript framework. 
+		jqPlot produces beautiful line, bar and pie charts with many features.</li>
+	<li><a href="http://stringjs.com/">string.js</a>: is a lightweight JavaScript library for the browser or for Node.js that provides extra String methods.</li>
+	<li><a href="http://underscorejs.org/">underscore.js</a>: Underscore is a JavaScript library that provides a whole mess of 
+		useful functional programming helpers without extending any built-in objects. Underscore is also available for NodeJS</li>
+	<li><a href="https://nodejs.org/en/">Node.js</a>: Console data transformation and output console applications are written in Node.js. 
+		Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.</li>
+	<li><a href="http://momentjs.com/">Moment.js</a>: Parse, validate, manipulate, and display dates in JavaScript. Support for Node.js as well as browser-side JavaScript.</li>
+	<li><a href="http://www.chartjs.org/">Chart.js</a>: Simple, clean and engaging charts for designers and developers</li>
+</ul>
+
+</blockquote>
+<hr/>
+
+<h4>OASIS Timeline Viewer</h4>
+<blockquote>
+
+<p>The <a target="_blank" href="examples/oasis/oasis.html">OASIS Timeline Viewer</a> is an integrated application using HTML, CSS, and JavaScript that allows the user to choose a finding aid dataset, view its contents along a timeline, 
+view some statistics about the finding aid, and gain direct access to the digital content in the finding aid.</p>
+
+<h5>Characteristics</h5>
+<ul>
+	<li>Data source is CSV output from OASIS</li>
+	<li>Dynamically reads CSV file input to generate timeline, statistics, and list of digital components</li>
+	<li>Uses a JavaScript library to transform CSV data into format suitable for use with Timeline visualizer and plots</li>
+	<li>Makes heavy use of <a href="http://jquery.com">jQuery</a> for user interface elements</li>
+</ul>
+
+<h5>Libraries</h5>
+<p>The following JavaScript libraries are used to implement the OASIS Timeline Viewer.</p>
+<ul>
+	<li><a href="http://jquery.com/">jQuery</a>: a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, 
+		event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.</li>
+	<li><a href="http://www.jqplot.com/">jqPlot</a>: jqPlot is a plotting and charting plugin for the jQuery Javascript framework. 
+		jqPlot produces beautiful line, bar and pie charts with many features.</li>
+	<li><a href="http://stringjs.com/">string.js</a>: is a lightweight JavaScript library for the browser or for Node.js that provides extra String methods.</li>
+	<li><a href="http://underscorejs.org/">underscore.js</a>: Underscore is a JavaScript library that provides a whole mess of 
+		useful functional programming helpers without extending any built-in objects. Underscore is also available for NodeJS</li>
+	<li><a href="https://nodejs.org/en/">Node.js</a>: Console data transformation and output console applications are written in Node.js. 
+		Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.</li>
+	<li><a href="http://momentjs.com/">Moment.js</a>: Parse, validate, manipulate, and display dates in JavaScript. Support for Node.js as well as browser-side JavaScript.</li>
+	<li><a href="http://visjs.org/">Vis.js</a>: A dynamic, browser based visualization library. The library is designed to be easy to use, to handle large amounts of 
+	dynamic data, and to enable manipulation of and interaction with the data. The library consists of the components DataSet, Timeline, Network, Graph2d and Graph3d.</li>
+</ul>
+</blockquote>
+
+<!-- Close of main container -->
+</div>
+
+<!-- Page footer -->
+<div id="footer">
+	<p class="footer">
+	<a href="http://library.harvard.edu">Harvard University Library</a> &#169; 2016+<br/>
+	Contact: <a href="mailto:ceilyn_boyd@harvard.edu?subject=Practical Data Visualization with JavaScript">C. M. Boyd</a>
+	</p>
+</div>
+
+</body>
+</html>

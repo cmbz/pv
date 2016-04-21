@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Readme</h1>
+<p>Welcome to the code and documents associated with the <strong>Practical Data* Visualization with JavaScript</strong> talk given by Ceilyn Boyd (ceilyn_boyd@harvard.edu) on 4/25/2016.</p>
+<h2>About the Talk</h2>
+<p>This talk introduces a methodology intended to help you decide:</p>
+<ul>
+<li>When to use programming techniques to visualize your data (and when to choose alternate means, e.g. Excel Pivot Charts);</li>
+<li>What data, or aspects of your data to render visually, and</li>
+<li>How best to use the programming tools at your disposal to visualize your data.</li>
+</ul>
+<p>The hands-on programming examples will use JavaScript and emphasize user interactivity, however the decision-framework is language agnostic. Examples will also involve data of interest to library audiences. Topics covered include:</p>
+<ul>
+<li>
+Workflows
+<ul>
+<li>Developing data analysis and visualization workflows</li>
+</ul>
+</li>
+<li>
+Working with data:
+<ul>
+<li>Data structures and data modeling;</li>
+<li>What kinds of library data and circumstances make for good visualization candidates;</li>
+<li>Strategies for working with data from different sources.</li>
+</ul>
+</li>
+<li>
+Visual presentation:
+<ul>
+<li>Visualization techniques, what and when to use them;</li>
+<li>Heuristics for creating good visualizations.</li>
+</ul>
+</li>
+</ul>
+<p>I have provided a lot of non-toy examples in the code described in the directory structure below that will hopefully demonstrate the above topics.</p>
+<h2>Requirements</h2>
+<h3>Browser</h3>
+<p>The code examples have been tested on FireFox, Opera, and Chrome. </p>
+<p>I was <strong>NOT</strong> successful getting the examples to work on <strong>Internet Explorer 11</strong>.</p>
+<p>N.B: The examples have <strong>not</strong> been tested on any mobile device; they probably will <strong>not</strong> work well on mobile devices.</p>
+<h3>Web Server</h3>
+<p>To install, run, and/or modify these examples, you will need to have access to a machine with a running Web server.</p>
+<p>Modify the URL in <code>~/pv/js/config.js</code> to reflect the name of your Web server. For instance, on my machine, the server name is: <code>http://localhost</code>, which is the default in the <code>config.js</code> file.</p>
+<p><strong>Macs</strong></p>
+<p>If you are using a Mac, Mac OS X has a default web server available to you. Typically, you install your code into the <code>~/Sites</code> directory and let Mac OS do the rest for you. If you installed <code>~/pv</code> into <code>~/Sites</code>, you will be able to access the examples through the URL: <code>http://localhost/pv/index.html</code></p>
+<p>For a console, use the Mac <strong>Terminal.app</strong> program, usually located in your <code>~/Applications</code> directory.</p>
+<p><strong>Windows</strong></p>
+<p>I use <strong>WampServer</strong> (<a href="http://www.wampserver.com/en/" title="WampServer">http://www.wampserver.com/en/</a>) on Windows 7 Enterprise. </p>
+<p>For a console, I use, <strong>ConEmu</strong> (<a href="https://conemu.github.io/">https://conemu.github.io/</a>).</p>
+<p><strong>Linux</strong></p>
+<p>Many Linux distributions contain a default LAMP stack. Check the installation instructions for your version of Linux to configure and start-up your Web server.</p>
+<h3>Node.js</h3>
+<p>To run the Node.js console applications in order to generate datasets, you will also need to install Node.js and several modules upon which the console applications depend.</p>
+<p>Fortunately, Node.js is very easy to install. Documentation is available here: 
+<a href="https://nodejs.org/en/">https://nodejs.org/en/</a>. Download the version appropriate for you architecture. Then, follow the installation instructions.</p>
+<p><strong>Installing CNA Console App Node.js Modules</strong></p>
+<p>The CNA Node.js console application makes use of the modules shown below. To install each, open a console window, change directory to ~/pv/examples/cna/console and type the following:</p>
+<ul>
+<li><code>fs</code>: This module handles file input/output and is installed by default when you install Node.js</li>
+<li>
+<code>ini.js</code>: <a href="https://github.com/npm/ini">https://github.com/npm/ini</a>
+<ul>
+<li><code>npm install ini &lt;ret&gt;</code></li>
+</ul>
+</li>
+<li>
+<code>moment.js</code>: This module handles date and time processing. <a href="http://momentjs.com/">http://momentjs.com/</a>
+<ul>
+<li><code>npm install moment &lt;ret&gt;</code></li>
+</ul>
+</li>
+<li>
+<code>string.js</code>: This module contains a variety of string processing utilities, including a simple CSV/TSV parser used in the <code>~/pv</code> code. <a href="http://stringjs.com/">http://stringjs.com/</a>
+<ul>
+<li><code>npm install string &lt;ret&gt;</code></li>
+</ul>
+</li>
+<li>
+<code>underscore.js</code>: Like string.js, this module contains a variety of utilities for processing JavaScript objects, arrays, and string. It is used widely in the <code>~/pv</code> code. <a href="http://underscorejs.org/">http://underscorejs.org/</a>
+<ul>
+<li><code>npm install underscore &lt;reg&gt;</code></li>
+</ul>
+</li>
+<li>
+<code>XRegExp.js</code>: This module supposed parsing of regular expressions and is used to extract dates from the labels on CNA digital objects. <a href="http://xregexp.com/">http://xregexp.com/</a>
+<ul>
+<li><code>npm install xregexp &lt;reg&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p>Once you install these modules, a new directory will be created called <code>~/pv/examples/cna/console/node_modules</code>. Don't delete it; the console app will make use of these modules to generate the datasets.</p>
+<h2>Directory Structure</h2>
+<p>The full structure of the <strong>Practical Data Visualization in JavaScript</strong> code examples is described in detail below. Indentations give you a sense of the directory hierarchy.</p>
+<ul>
+<li>
+<p><strong><code>~/pv</code></strong></p>
+<ul>
+<li>Base directory for all code and documentation</li>
+<li>
+<code>index.css</code>
+<ul>
+<li>CSS file for the index page for the presentation</li>
+</ul>
+</li>
+<li>
+<code>index.html</code>
+<ul>
+<li>HTML file for the index page for the presentation. All examples are linked from this page.</li>
+</ul>
+</li>
+<li>
+<code>readme.md</code>
+<ul>
+<li>This file, the Mark Down readme file for the entire code base</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>~/pv/docs</code></strong></p>
+<ul>
+<li>Documentation directory, including presentation </li>
+</ul>
+</li>
+<li>
+<strong><code>~/pv/examples</code></strong>
+<ul>
+<li>Directory containing code for all examples: <em>Colonial North American</em> (CNA), <em>Towards a Collections &amp; Content Development Strategic Plan</em> (TCCDS), and the <em>OASIS Finding Aid Viewer</em> (OASIS)</li>
+</ul>
+</li>
+<li>
+<strong><code>~/pv/examples/cna</code></strong>
+<ul>
+<li>Directory containing code for the Colonial North American Project (CNA) examples</li>
+<li>
+<strong><code>~/pv/examples/cna/console</code></strong>
+<ul>
+<li>
+Node.js source code
+<ul>
+<li>
+<code>cnaparse.js</code>
+<ul>
+<li>Module containing code to parse the TSV datafile: <code>~/pv/examples/data/cna/inventory_all_data_04_13_2016.txt</code></li>
+</ul>
+</li>
+<li>
+<code>process_cna_datasets.ini</code>
+<ul>
+<li>Ini file used to configure <code>cnaparse.js</code></li>
+</ul>
+</li>
+<li>
+<code>process_cna_datasets.js</code>
+<ul>
+<li>Console application that reads the INI file and source datafile <code>~/pv/examples/data/cna/inventory_all_data_04_13_2016.txt</code> and generates CNA JSON datasets to be stored in <code>~/pv/examples/data/cna</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/cna/cna.css</code>
+<ul>
+<li>Simple CSS file for the CNA examples</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/cna/cna_distribution_by_date.html</code>
+<ul>
+<li>This plot illustrates the number of unique, significant dates associated with digitized items. For most collections, an interval was identified by the surveyor indicating an earliest and latest date for the collection. Each digitized item will be associated with a date (or date range) somewhere within that interval. 
+This plot does not handle date ranges, but instead assigns a single date (the earliest) for ease of plotting.</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/cna/cna_distribution_by_language.html</code>
+<ul>
+<li>This plot shows the frequency of languages associated with collections having digitized content.</li></li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/cna/cna_distribution_by_narrow_subject.html</code>
+<ul>
+<li>In addition to the primary, broad survey subject 
+areas shown above, the surveyor also identified some special, more narrow, subjects as well. This plot shows the frequency of these narrow subject areas identified 
+in the survey associated with collections having digitized content. This visualization uses the HTML5 canvas element and shows some of the limitations
+of radar charts.</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/cna/cna_distribution_by_region.html</code>
+<ul>
+<li>This plot shows the frequency of regions identified in the survey associated with collections having digitized content.</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/cna/cna_distribution_by_subject.html</code>
+<ul>
+<li>This plot shows the frequency of subject areas identified in the 
+survey associated with collections having digitized content.</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/cna/cna_geocode_regions.html</code>
+<ul>
+<li>Illustration using the Google Maps API of the region data. 
+Requires a Google Maps API key, and therefore may not render properly unless you supply a valid one for your server.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong><code>~/pv/examples/data</code></strong>
+<ul>
+<li>
+Directory where source data for <strong>all</strong> examples is stored. Node.js console applications also write files to these sub-directories.The name of the directory should be self-explanatory. The description, purpose, and structure of these individual files is described in greater detail in the Readme section called: <strong>Data File Formats</strong>.
+<ul>
+<li>
+<code>~/pv/examples/data/cna</code>: <strong>CNA datasets</strong>
+<ul>
+<li><code>cna_region_geocode.txt</code>: hand-coded file containing coordinates for each of the CNA survey geographical regions</li>
+<li><code>frequency_by_language.json</code>: output of Node.js application <code>process_cna_datasets.js</code></li>
+<li><code>frequency_by_narrow_subject.json</code>: output of Node.js application <code>process_cna_datasets.js</code></li>
+<li><code>frequency_by_region.json</code>: output of Node.js application <code>process_cna_datasets.js</code></li>
+<li><code>frequency_by_subject.json</code>: output of Node.js application <code>process_cna_datasets.js</code></li>
+<li><code>geocode_regions.json</code>: output of Node.js application <code>process_cna_datasets.js</code></li>
+<li><code>inventory_all_data_04_13_2016.txt</code>: output of an MS-Access query</li>
+<li><code>label_date.json</code>: output of Node.js application <code>process_cna_datasets.js</code></li>
+<li><code>label_date_frequency.json</code>: output of Node.js application <code>process_cna_datasets.js</code></li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/data/oasis</code>: <strong>OASIS datasets</strong>. All of these files were created automatically using OASIS's CSV download tool
+<ul>
+<li><code>div00407.csv</code>: Philadelphia Universalist Convention. Records, 1789-1807</li>
+<li><code>div00579.csv</code>: Parsons, Jonathan, 1705-1776. Sermons, ca. 1727-1772.</li>
+<li><code>hou00108.csv</code>: Joseph Dennie Papers, 1783-1815.</li>
+<li><code>hua04010.csv</code>: Records of Grants for Work among the Indians, 1720-1812.</li>
+<li><code>hua07010.csv</code>: Papers of John and Hannah Winthrop, 1728-1789.</li>
+<li><code>med00230.csv</code>: Papers of John Winthrop, 1651-1879.</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/data/tccds</code>: <strong>TCCDS datasets</strong>. These files are all the output of the Node.js application <code>process_tccds_datasets.js</code> and make use of CSV datasets that are private and have not been distributed.
+<ul>
+<li><code>anonymized_trends_by_topic.json</code></li>
+<li><code>anonymized_trends_by_mentions.json</code></li>
+<li><code>anonymized_engagement_by_topic.json</code></li>
+<li><code>anonymized_engagement_by_mentions.json</code></li>
+<li><code>anonymized_drivers_by_topic.json</code></li>
+<li><code>anonymized_drivers_by_mentions.json</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong><code>~/pv/examples/oasis</code></strong>
+<ul>
+<li>Directory containing code for the OASIS Timeline Viewer</li>
+<li>
+<code>~/pv/examples/oasis/oasis.css</code>
+<ul>
+<li>Simple CSS file for the OASIS viewer</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/oasis/oasis.html</code>
+<ul>
+<li>HTML file for the OASIS viewer</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/oasis/oasis.js</code>
+<ul>
+<li>JavaScript module containing code for reading, parsing, and transforming data associated with CSV finding aid components, and managing/controling the timeline viewer UI element</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong><code>~/pv/examples/tccds</code></strong>
+<ul>
+<li>Directory containing code for the Towards a Collections &amp; Content Development Strategic Plan (TCCDS) examples</li>
+<li>
+<strong><code>~/pv/examples/tccds/console</code></strong>
+<ul>
+<li><strong>Note:</strong> This directory contains the console application (and related Ini file) that anonymizes TCCDS datasets. It is being made available here for completeness, however the datasets it operates on are private (because they contain personal identifying characteristics) and will not be made available online.</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/tccds/tccds.css</code>
+<ul>
+<li>Simple CSS file for all TCCDS visualizations</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/tccds/tccds_drivers.html</code>
+<ul>
+<li>HTML file containing code for visualizations depicting information about drivers of collecting practices</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/tccds/tccds_engagement.html</code>
+<ul>
+<li>HTML file containing code for visualizations depicting comments from the community and others about trends/issues around collecting.</li>
+</ul>
+</li>
+<li>
+<code>~/pv/examples/tccds/tccds_trends.html</code>
+<ul>
+<li>HTML file containing code for visualizations depicting information about trends in collecting practices</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>**~/pv/js</code>**
+<ul>
+<li>Directory containing a single file to support configuration for all examples.</li>
+<li>
+<code>config.js</code>
+<ul>
+<li>This file contains a very simple module that allows the examples to work without having to use a full JavaScript framework such as Backbone.js or Angular.js. Edit the URL in this file to point to the URL on your server where you have installed the <code>~/pv</code> code.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Data File Formats</h2>
+<p>The directory: <code>~/pv/examples/data</code> contains source and destination datasets for all of the examples. The structure of each of these files is described in greater detail below.</p>
+<h3>CNA Datasets</h3>
+<p>All CNA datasets are located here:  <code>~/pv/examples/data/cna</code>.</p>
+<p><strong>CNA TSV Files</strong></p>
+<p><code>cna_region_geocode.txt</code>: hand-coded TSV file containing coordinates for 11 of the CNA survey geographical regions. Columns/fields are:</p>
+<ol>
+<li>Region</li>
+<li>Latitude</li>
+<li>Longitude</li>
+</ol>
+<p><code>inventory_all_data_04_13_2016.txt</code>: output of an MS-Access query. This TSV file contains 5,956 rows of data, each representing a CNA digital object. 38 fields are used to describe each of the digital objects.</p>
+<p><strong>CNA JSON Files</strong></p>
+<p>All CNA JSON files have the same, basic top level structure:</p>
+<pre><code>{
+    'metadata':{object containing metadata},
+    'data':{object containing data}
+}
+</code></pre>
+
+<p><code>frequency_by_language.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+                    'pretty_languages': [Array of prettified language names],
+                    'num_languages': &lt;integer&gt;,
+                    'marc_language_lookup':{Object containing lookup table linking marc language names to pretty names},
+    },
+    'data':{
+                'marc_lang_1': {
+                                  'mentions':&lt;# digital objects tagged with marc_lang_1&gt;,
+                                  'objects':[Array of digital objects tagged with marc_lang_1] },
+                # more languages below
+    },          
+}
+</code></pre>
+
+<p><code>frequency_by_narrow_subject.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+                    'subjects': [Array of subjects mentioned],
+    },
+    'data':{
+                    'subject_1': {
+                                      'mentions':&lt;# digital objects tagged with subject_1&gt;,
+                                      'objects':[Array of digital objects tagged with subject_1] },
+                # more narrow subjects below
+    },          
+}
+</code></pre>
+
+<p><code>frequency_by_region.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+                    'regions': [Array of regions mentioned],
+                    'num_regions': &lt;integer number of regions mentioned&gt;
+    },
+    'data':{
+                    'region_1': {
+                                      'mentions':&lt;# digital objects tagged with region_1&gt;,
+                                      'objects':[Array of digital objects tagged with region_1] },
+                # more regions below
+    },          
+}
+</code></pre>
+
+<p><code>frequency_by_subject.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+                    'subjects': [Array of subjects mentioned],
+    },
+    'data':{
+                    'subject_1': {
+                                      'mentions':&lt;# digital objects tagged with subject_1&gt;,
+                                      'objects':[Array of digital objects tagged with subject_1] },
+                # more subjects below
+    },          
+}
+</code></pre>
+
+<p><code>geocode_regions.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+                    'num_items': [total # items with associated region geocode],
+                    'region_geocodes':{Lookup table of geocodes, keyed on region},
+    },
+    'data':{
+                    'item_1': [region-latitude, region-longitude]
+                    # more items below
+    },          
+}
+</code></pre>
+
+<p><code>label_date.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+    },
+    'data':{
+                    'item_1': {
+                                'date':&lt;significant date&gt;,
+                                'url':&lt;URL for the digital object&gt;,
+                                'ead':&lt;URL for the EAD, if any&gt;,
+                                'owner':&lt;owning repository&gt;,
+                },
+                # more items below
+    },          
+}
+</code></pre>
+
+<p><code>label_date_frequency.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;,
+                    'num_dates':&lt;# unique dates&gt;
+    },
+    'data':{
+                    'date_1': &lt;# of digital objects associated with date&gt;,
+                    # more dates below
+    },          
+}
+</code></pre>
+
+<h3>Towards a Collections &amp; Content Development Strategy (TCCDS) Datasets</h3>
+<p>All TCCDS datasets are located here: <code>~/pv/examples/data/tccds</code>. These files are all the output of the Node.js application <code>process_tccds_datasets.js</code> and make use of a dataset that is private and has not been distributed.</p>
+<p>All TCCDS JSON files have the same, basic top level structure:</p>
+<pre><code>{
+    'metadata':{object containing metadata},
+    'data':{object containing data}
+}
+</code></pre>
+
+<p><code>anonymized_trends_by_topic.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+    },
+    'data':{
+                    'trend_1': [ #array of trend objects
+                            {
+                                'name':&lt;trend name&gt;,
+                                'description:&lt;trend description&gt;,
+                                'mentions':&lt;# mentions&gt;
+                            },
+                            # more trend objects below
+                },
+                # more mention trends below
+    },          
+}
+</code></pre>
+
+<p><code>anonymized_trends_by_mentions.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+    },
+    'data':{
+                    '1': [ #array of trend objects
+                            {
+                                'name':&lt;trend name&gt;,
+                                'description:&lt;trend description&gt;,
+                                'mentions':&lt;# mentions&gt;
+                            },
+                            # more trend objects below
+                },
+                # more mention counts below
+    },          
+}
+</code></pre>
+
+<p><code>anonymized_engagement_by_topic.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+    },
+    'data':{
+                    'topic_1': &lt;# of mentions&gt;,
+                    # more engagement topic mentions below
+    },          
+}
+</code></pre>
+
+<p><code>anonymized_engagement_by_mentions.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+    },
+    'data':{
+                    '1': [ #array of engagement topic names]
+                },
+                # more mention counts below
+    },          
+}
+</code></pre>
+
+<p><code>anonymized_drivers_by_topic.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+    },
+    'data':{
+                    'driver_1': [ #array of driver objects
+                            {
+                                'name':&lt;driver name&gt;,
+                                'description:&lt;driver description&gt;,
+                                'mentions':&lt;# mentions&gt;
+                            },
+                            # more driver objects below
+                },
+                # more mention drivers below
+    },          
+}
+</code></pre>
+
+<p><code>anonymized_drivers_by_mentions.json</code>: Format as shown below.</p>
+<pre><code>{
+    'metadata':{
+                    'name': &lt;name of dataset&gt;,
+                    'source':&lt;name of original source file&gt;,
+                    'title':&lt;title of the dataset&gt;,
+                    'about':&lt;info about the dataset&gt;,
+                    'filename': &lt;name of the JSON file&gt;
+    },
+    'data':{
+                    '1': [ #array of driver objects
+                            {
+                                'name':&lt;driver name&gt;,
+                                'description:&lt;driver description&gt;,
+                                'mentions':&lt;# mentions&gt;
+                            },
+                            # more driver objects below
+                },
+                # more mention counts below
+    },          
+}
+</code></pre>
+
+<h3>OASIS Viewer Datasets</h3>
+<p>The OASIS Viewer datasets are the output of the OASIS CSV download tool. Each file contains the flattened output (using XSLT) of the hierarchical finding aid XML tree, with one row per finding aid component (e.g. folder, box, item). Each row consists of 27 columns (or fields), separated by a comma. The column headers are shown below. For any given finding aid, some or all of these fields may be empty of data. The OASIS Timeline Viewer makes use of some, but not all, of these fields.</p>
+<ol>
+<li>ID</li>
+<li>Unit Title</li>
+<li>Unit Date</li>
+<li>Start Year</li>
+<li>End Year</li>
+<li>Unit ID	Level</li>
+<li>Originator</li>
+<li>Container 1</li>
+<li>Container 2</li>
+<li>Container 3</li>
+<li>Phys. Desc. 1</li>
+<li>Phys. Desc. 2</li>
+<li>Phys. Desc. 3</li>
+<li>Phys. Loc</li>
+<li>Access Restrict.</li>
+<li>URN</li>
+<li>Collection Title</li>
+<li>Originator</li>
+<li>Collection Date</li>
+<li>Collection ID</li>
+<li>Parent 1</li>
+<li>Parent 2</li>
+<li>Parent 3</li>
+<li>Parent 4</li>
+<li>Parent 5</li>
+<li>Parent 6</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
