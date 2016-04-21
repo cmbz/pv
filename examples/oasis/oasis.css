@@ -1,0 +1,360 @@
+/**
+ * Harvard Library Timeline
+ * 
+ * @author C. M. Boyd, ceilyn_boyd@harvard.edu
+ * @copyright Harvard University Library
+ * @created 21 February 2015
+ * @updated 3 March 2015
+ */
+
+/**
+ * Styling for generate HTML CSS classes
+ */
+body {
+	font-size: 10pt;
+	font-family:Lucida Sans,Lucida Grande,Arial,sans-serif;
+	color: #635F5D;
+  	height: auto;
+  	width: auto;
+  	background: #fcfcfc;
+  	background: #fff;
+  	border-style: solid;
+  	border-width: 1px;
+  	border-color: #E5F2E0;
+  	padding: 5px;
+}
+
+h1 {
+	margin-top: 0;
+	line-height:30px;
+	text-align: left;
+	color: #635F5D;
+}
+
+h2 {
+	text-align: left;
+	color: #8E8883;
+}
+
+h3 {
+	text-align: left;
+}
+
+h4 {
+	text-align: left;
+}
+
+h3.cp {
+	text-align: center;
+	font-weight: bold;
+}
+
+ul {
+	padding:0 0 0 15px; 
+	list-style : square;
+}
+
+a {
+	font-size: 10pt;
+	color: #5A1D1A;
+	text-decoration:none;
+}
+
+a:hover { text-decoration:underline; }
+
+p.center {
+	text-align: center;
+}
+
+p.right {
+	text-align: right;	
+}
+
+em {
+	font-weight: bold;
+	font-style: normal;
+}
+
+hr {
+	border:none;
+	border-top:1px dotted #000;
+}
+
+p.footer {
+	text-align: center;
+}
+
+span.heading {
+	font-size: 12pt;
+	font-weight: bold;	
+	margin: 0px;
+	padding: 0px;
+}
+
+div.container_16 {
+	background: #fff;
+	border-width: 1px;
+	border-color: #828989;
+	border-style: solid;
+}
+
+.crumbs {
+	color: #5A1D1A;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.crumbs a {
+	color: #5A1D1A;	
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+.crumbs a:hover {
+	color: #D08D00;
+	text-decoration: none;
+}
+
+p.footer {
+	padding-top: 5px;
+}
+
+.item_info a {
+	text-decoration: underline;
+	color: #BD2D28;
+}
+
+/* override the ui widget theme font size */
+.ui-widget {
+	font-size: 9pt;
+}
+
+.ui-autocomplete {
+	max-height: 100px;
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+}
+
+* html .ui-autocomplete {
+	height: 100px;
+}
+
+/*
+ * Styling for HTML IDs
+ */
+
+#banner {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	background-color: #EFECEA;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #E5E2E0;
+}
+
+#navigation {
+	padding: 5px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #697070;
+	background-color:#F5F3F2;
+}
+
+#container {
+	background:	#fcfcfc;
+	height:		100%;
+	margin:		0 auto;
+	width:		100%;
+	max-width:	960px;
+	min-width:	700px;
+	height: 	1000px;
+	_width:		700px; /* min-width for IE6 */
+}
+
+#footer {
+	background-color: #EFECEA;
+	padding: 5px;
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-top-color: #E5E2E0; 
+}
+
+#timeline {
+	margin-bottom: 5px;
+	margin-top: 0px;
+}
+
+#zoom_label {
+	font-weight: bold;
+	display: inline;
+	position: relative;
+	top: -10px;
+	margin: 30px 0 0 0;
+}
+
+#button_panel {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#select_finding_aid_label {
+	display: block;
+}
+
+#select_finding_aid {
+	font-size: 7pt;
+}
+
+#control_panel select {
+	width: 100px;
+}
+
+#cp_button {
+	position: relative;
+	top: -10px;	
+}
+
+#pp_button, label {
+	position: relative;
+	top: -10px;		
+}
+
+#cp_tabs {
+	height: 300px;	
+}
+
+#date_annotation {
+	font-size: 7pt;
+}
+
+
+#dct {
+	width: 100%;
+}
+
+#digital_components_table {
+	font-size: 11px;
+	position: relative;
+    margin-left: 0;
+    width: 100%;
+	border-style: none;
+	padding: 5px;
+}
+
+#digital_components_table a {
+	font-size: 11px;
+}
+
+#profile_panel {
+	background-color: #fcfcfc;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #F5F3F2;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+/* Start date chart */
+#sc {
+	width: 100%;
+}
+
+/* End date chart */
+#ec {
+	width: 100%;
+}
+
+
+a.digital {
+	color: #9A3E25;
+}
+
+div.chart {
+	border-style: solid;
+	border-width: 1px;
+	position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+span.digital {
+	color: #9A3E25;
+	font-weight: bold;
+}
+
+span.nondigital {
+	color: #978F80;
+	font-weight: bold;
+}
+
+table.oasisStats {
+	border-collapse: collapse;
+	background: #fcfcfc;
+}
+
+.oasisStats {
+    border: 1px solid #635F5D;
+    padding: 5px;
+    color: #635F5D;
+}
+
+/**
+ * Styling for Timeline CSS classes and IDs
+ */
+ 
+/**
+ * Styling for Timeline Items
+ */
+ 
+.vis.timeline .vis-item {
+	font-size: 9pt;
+}
+ 
+.vis-item.nondigital {
+	font-style: italic;
+	border-color: #7C715E;
+}
+
+.vis-item.vis-range.nondigital {
+  background-color: #E5E2E0;
+}
+
+.vis-item.digital {
+	border-color: #9A3E25;
+}
+
+.vis-item.vis-range.digital {
+  background-color: #BD2D28;
+}
+
+/* Highlight a selected range */
+.vis-item.vis-range.selected {
+	border-color: #E3BA22;
+	border-width: 2px;
+}
+
+/* Highlight a selected point */
+.vis-item.point.selected {
+	background-color: #F6B656;
+	border-color: #7C715E;
+}
+ 
+/* Gray background in weekends, white text color */
+.vis.timeline .timeaxis .grid.saturday,
+.vis.timeline .timeaxis .grid.sunday {
+  background: #F5F3F2;
+}
+.vis.timeline .timeaxis .text.saturday,
+.vis.timeline .timeaxis .text.sunday {
+  color: #8E8883;
+}
+
+.vis.timeline .timeaxis .text {
+	font-weight: bold;
+}

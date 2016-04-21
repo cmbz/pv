@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<title>Colonial North American Project at Harvard University, Current Digital Inventory Examples: Distribution by Subject Area</title>
+
+<!-- Include external files and scripts here -->
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.css" />
+<link rel="stylesheet" type="text/css" href="cna.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/string.js/3.3.1/string.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.0.2/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/string.js/3.3.1/string.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pointLabels.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.barRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.bubbleRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasOverlay.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasTextRenderer.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/excanvas.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+
+</head>
+
+<body>
+<!-- Banner -->
+<div id="banner">
+	<h1>Practical Data* Visualization with JavaScript</h1>
+	<h2>When, *What, and How</h2>
+</div>
+
+<!--  The main container for all views -->
+<div class="container">
+
+<a href="../../index.html">(Back to All Examples)</a>
+
+<h2>The Colonial North American Project</h2>
+
+<h3>Distribution by Subject</h3>
+<h4>Radar Plot</h4>
+<p>This plot shows the frequency of subject areas identified in the survey associated with collections having digitized content. This visualization uses the <em>HTML5 canvas element</em>.</p>
+	<div id="subject_radar_plot"><canvas id="sf_canvas"></canvas></div>
+<h4>Bar Chart</h4>
+<p>This bar chart shows the identical data as the radar plot above.</p>
+	<div id="sf_bar"></div>
+	
+<!-- Close of main container -->
+</div>
+
+<div>&nbsp;</div>
+
+<!-- Page footer -->
+<div id="footer">
+	<p class="footer">
+	<a href="http://library.harvard.edu">Harvard University Library</a> &#169; 2016+<br/>
+	Contact: <a href="mailto:ceilyn_boyd@harvard.edu?subject=Practical Data Visualization with JavaScript">C. M. Boyd</a>
+	</p>
+</div>
+
+<script type="text/javascript">
+var dataDirectory = Config.getDataDirectory();
+//Datasets for CNA
+var dataset = dataDirectory + '/cna/frequency_by_subject.json';
+
+/**
+ * Subject area frequency radar plot
+ *
+ * @param {Object} Raw data (contains a metadata and data object)
+ */
+function createSubjectFrequencyRadarPlot(data) {
+	var radarRawData = JSON.parse(data);
+	var subjectData = [];
+	var subjects = radarRawData['metadata']['subjects'];
+	var keys = _.keys(radarRawData['data']);
+	keys.forEach(function(key){
+		subjectData.push(radarRawData['data'][key]['mentions']);
+	});
+	
+	var subjectFrequencyOptions = {
+		    scaleShowLine : true,
+		    angleShowLineOut : true,
+		    scaleShowLabels : false,
+		    scaleBeginAtZero : true,
+		    angleLineColor : "rgba(0,0,0,.1)",
+		    angleLineWidth : 1,
+		    pointLabelFontFamily : "'Arial'",
+		    pointLabelFontStyle : "normal",
+		    pointLabelFontSize : 10,
+		    pointLabelFontColor : "#666",
+		    pointDot : true,
+		    pointDotRadius : 3,
+		    pointDotStrokeWidth : 1,
+		    pointHitDetectionRadius : 20,
+		    datasetStroke : true,
+		    datasetStrokeWidth : 2,
+		    datasetFill : true
+	};
+
+	// create the data for the radar plot
+	var radarData = {
+		    labels: subjects,
+		    datasets: [
+		        {
+		            label: "Survey Subject Frequency",
+		            fillColor: "rgba(220,220,220,0.2)",
+		            //strokeColor: "rgba(220,220,220,1)",
+		            strokeColor: '#635F5D',
+		            pointColor: "#137B80",
+		            pointStrokeColor: "#fff",
+		            pointHighlightFill: "#fff",
+		            pointHighlightStroke: "rgba(220,220,220,1)",
+		            data: subjectData
+		        }
+		    ]
+		};
+	
+	// get the context for the subject frequency canvas
+	var ctx = document.getElementById('sf_canvas').getContext("2d");
+	var subjectRadarPlot = new Chart(ctx).Radar(radarData, subjectFrequencyOptions);
+}
+
+/**
+ * Subject frequency bar chart
+ *
+ * @param {Object} Raw data (contains a metadata and data object)
+ * @return {Object}
+ */
+function createSubjectFrequencyBarChart(data) {
+	// parse the JSON data
+	var rawBarData = JSON.parse(data);
+	// get subject areas
+	var subjectAreas = rawBarData['metadata']['subjects'];
+	// enable jqplot plugins
+	$.jqplot.config.enablePlugins = true;
+	
+	//
+	// build the bar chart
+	//
+	var barData = [];
+	// loop through subjects
+	subjectAreas.forEach(function(subject, index){
+		var count = rawBarData['data'][subject]['mentions'];
+		barData.push([subject, count]);
+	});
+
+	// create the bar chart
+	var subjectFrequencyBarChart = $.jqplot('sf_bar', [barData], {
+		// get the title of the chart from the data
+		title: 'Frequency Distribution of Survey Subject Areas',
+		seriesDefaults: {
+			renderer:$.jqplot.BarRenderer,
+			// place the numerical values above each bar
+			pointLabels: {show: true},
+		},
+		axesDefaults: {
+			tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+			// put the labels on a 45 degree slant
+			tickOptions: {
+				angle: -45,
+				fontSize: '9pt'
+			}
+		},
+		axes: {
+			yaxis: {
+				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+				label: '# titles',
+			},
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				label: 'Subject Areas'
+			}
+		},
+     highlighter: {
+         tooltipContentEditor: function (str, seriesIndex, pointIndex) {
+          	var data = barData[pointIndex];
+			var m = (data[1] == 1) ? ' title' : ' titles';
+			var html = data[0] + ' had ' + data[1] + m;
+			return html;
+         },
+         sizeAdjust: 10,
+         tooltipLocation: 'n',
+         tooltipAxes: 'both',
+         useAxesFormatters: false
+     },
+	});
+	
+	return subjectFrequencyBarChart;
+}
+
+// create the subject frequency distribution radar plot and bar chart
+$.ajax({
+	url: dataset,
+	dataType: 'text'
+}).done(function(data){
+	createSubjectFrequencyRadarPlot(data);
+	var sfbar = createSubjectFrequencyBarChart(data);
+	sfbar.replot();
+}).fail(function(){
+	alert('Read of: ' + dataset + ' failed.');
+});
+
+//create the narrow subject frequency distribution radar plot and bar chart
+$.ajax({
+	url: datasets['NarrowSubjectFrequency'].url,
+	dataType: 'text'
+}).done(function(data){
+	createNarrowSubjectFrequencyRadarPlot(data);
+	var nsfbar = createNarrowSubjectFrequencyBarChart(data);
+	nsfbar.replot();
+}).fail(function(){
+	alert('Read of: ' + url + ' failed.');
+});
+
+//create the region frequency distribution radar plot and bar chart
+$.ajax({
+	url: datasets['RegionFrequency'].url,
+	dataType: 'text'
+}).done(function(data){
+	createRegionFrequencyRadarPlot(data);
+	var rfb = createRegionFrequencyBarChart(data);
+	rfb.replot();
+}).fail(function(){
+	alert('Read of: ' + url + ' failed.');
+});
+
+// add markers to the CNA google map
+$.ajax({
+	url: datasets['GeocodeRegions'].url,
+	dataType: 'text'
+}).done(function(data){
+	addCnaMapMarkers(data);
+}).fail(function(){
+	alert('Read of: ' + url + ' failed.');
+});
+</script>
+
+</body>
+</html>

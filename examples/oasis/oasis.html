@@ -1,0 +1,595 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<title>OASIS Finding Aid Viewer</title>
+
+<!-- Include external files and scripts here -->
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.0/vis.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.css" />
+<link rel="stylesheet" type="text/css" href="oasis.css"/>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="oasis.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.0/vis.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/string.js/3.3.1/string.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.11/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.0.2/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.pointLabels.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqPlot/1.0.8/plugins/jqplot.barRenderer.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/string.js/3.3.1/string.min.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+</head>
+
+<body>
+<!-- Banner -->
+<div id="banner">
+	<h1>OASIS Finding Aid Viewer</h1>
+	<h2>Support for viewing finding aid components</h2>
+</div>
+
+<!--  The main container for all views -->
+<div class="container">
+	
+	<div id="button_panel">
+		<!-- define the selection menu for choosing a finding aid to view -->
+		<label id="select_finding_aid_label" for="select_finding_aid">Select a finding aid</label>
+		<select name="select_finding_aid" id="select_finding_aid"></select>
+		<button id="cp_button">Control Panel</button>
+		<input type="checkbox" id="pp_button"><label for="pp_button">Show finding aid profile</label>
+	</div>
+	
+	<!-- Profile panel -->
+	<div id="profile_panel">
+		<p>
+			<b>Display/Hide</b> the profile by clicking the <i>Show profile</i> button.
+		</p>
+		<p id="finding_aid_title" style="text-align:center;"></p>
+		<div id="pp_tabs">
+			<ul>
+				<li><a href="#tabs-4">Overview</a></li>
+				<li><a href="#tabs-5">Start Years</a></li>
+				<li><a href="#tabs-6">End Years</a></li>	
+				<li><a href="#tabs-7">Digital Components</a></li>								
+			</ul>
+			<div id="tabs-4">
+				<p>Overview of information in this finding aid.</p>
+				<p>Items and ranges in <span class="digital">red</span> are available in digital format. 
+				Items and ranges in <span class="nondigital">grey</span> are not.</p>
+				<div id="stats_overview">Summary table goes here.</div>
+			</div>
+			<div id="tabs-5">
+				<p>Chart showing distribution of start dates for all components in this finding aid.
+				<br/>Hover your mouse over a bar to see the number of components for a given date.</p>
+				<div id="sc"></div>
+		    </div>
+		    <div id="tabs-6">
+				<p>Chart showing distribution of end dates for all components in this finding aid.
+				<br/>Hover your mouse over a bar to see the number of components for a given date.</p>
+				<div id="ec"></div>
+		    </div>
+		    <div id="tabs-7">
+				<p>List of digital components in the finding aid.</p>
+				<div id="dct"><table class="display" id="digital_components_table"></table></div>
+		    </div>
+		</div>
+	</div>
+	
+	<!-- The Timeline widget -->
+	<div id="timeline"></div>
+	
+	<!-- Dialog box for displaying information about a selected item -->
+	<div class="ui-widget" id="item_dialog" title="Component Information"></div>
+	
+	<!-- Control panel dialog box -->
+	<div class="ui-widget" id="control_panel" title="Control Panel - Configure the Timeline">
+		<p>
+			<b>Open</b> the dialog box by clicking the <i>Control Panel</i> button.
+			<b>Close</b> the dialog box by clicking the <i>x</i> in the upper right corner of the box.
+		</p>
+		<p>Timeline items and ranges in <span class="digital">red</span> are available in digital format. 
+				Items and ranges in <span class="nondigital">grey</span> are not.</p>
+		<div id="cp_tabs">
+			<ul>
+				<li><a href="#tabs-1">Zoom</a></li>
+				<li><a href="#tabs-2">Select date</a></li>
+				<li><a href="#tabs-3">Help</a></li>
+			</ul>
+			<div id="tabs-1">
+				<p>The timeline supports <em>four</em> levels of zoom: Month, Year, Decade, and Century.
+				Choose your level to narrow in on a single <i>Month</i> or gain the overview of 
+				events at a larger unit, such as an entire <i>Century</i>.</p>
+				<div class="ui-widget">
+				<label id="zoom_label" for="zoom">Zoom to</label>
+				    <select name="zoom" id="zoom">
+					    <option>Month</option>
+					    <option selected="selected">Year</option>
+					    <option>Decade</option>
+					    <option>Century</option>
+				    </select>
+				</div>
+			</div>
+			<div id="tabs-2">
+				<p>Click into the box to select a date using the calendar or type a date directly into the box. Click the 'Go' button
+				to center the timeline viewer at your chosen date. (<em>Format:</em> DD/MM/YYYY)</p>
+				<p>Once you click 'Go', your chosen date, interpreted as Greenwich Mean Time, is also shown below.</p>
+			    <div class="ui-widget">
+			    	<b>Select date</b> <input type="text" id="datepicker"> <button id="datepicker_button">Go</button>
+			    </div>
+			    <p id="date_annotation"></p>
+		    </div>
+		    <div id="tabs-3">
+		    	<p>Use the tips below to navigate and manipulate the timeline.</p>
+		    		<ul>
+		    			<li><em>Horizontal pan:</em> Click anywhere on the timeline and drag left or right.</li>		    			
+		    			<li><em>Vertical pan:</em> Use the scroll bar to scroll up or down.</li>		    			
+		    			<li><em>Zoom in/out:</em> Use your mouse scroll wheel or pinch/open your fingers on a touch pad or mobile device. Alternately,
+		    				use the control panel <i>Zoom</i> tab.</li>
+		    			<li><em>Hover:</em> over a range or point to get information about the component.</li>
+		    			<li><em>Click:</em> on a range or point to launch a dialog with information about the compponent.</li>		    			
+		    		</ul>
+		    	</p>
+		    </div>
+		</div>
+	</div>
+<!-- Close of main container -->
+</div>
+
+<!-- Page footer -->
+<div id="footer">
+	<p class="footer">
+	<a href="http://library.harvard.edu">Harvard University Library</a> &#169; 2016+<br/>
+	Contact: <a href="mailto:ceilyn_boyd@harvard.edu?subject=Harvard Library OASIS Finding Aid Viewer">C. M. Boyd</a>
+	</p>
+</div>
+
+<script type="text/javascript">
+
+// convenience object containing information about the prestored finding aid data
+var findingAidData = [
+		{'filename': 'div00407.csv', 'library':'Andover-Harvard Theological Library',
+			'collection':'Philadelphia Universalist Convention. Records, 1789-1807.', 'fa':'http://nrs.harvard.edu/urn-3:DIV.LIB:div00407'},
+		{'filename': 'div00579.csv', 'library':'Andover-Harvard Theological Library',
+				'collection':'Parsons, Jonathan, 1705-1776. Sermons, ca. 1727-1772.', 'fa':'http://nrs.harvard.edu/urn-3:DIV.LIB:div00579'},
+		{'filename': 'hou00108.csv', 'library':'Houghton Library','collection':'Joseph Dennie Papers, 1783-1815.', 
+					'fa':'http://nrs.harvard.edu/urn-3:FHCL.Hough:hou00108'},
+		{'filename': 'hua04010.csv', 'library':'Harvard University Archives',
+			'collection':'Records of Grants for Work among the Indians, 1720-1812.', 'fa':'http://nrs.harvard.edu/urn-3:HUL.ARCH:hua04010'},
+		{'filename': 'hua07010.csv', 'library':'Harvard University Archives',
+				'collection':'Papers of John and Hannah Winthrop, 1728-1789.', 'fa':'http://nrs.harvard.edu/urn-3:HUL.ARCH:hua07010'},
+		{'filename': 'med00230.csv', 'library':'Countway Library',
+					'collection':'Papers of John Winthrop, 1651-1879.', 'fa':'http://nrs.harvard.edu/urn-3:HMS.Count:med00230'}
+];
+
+//
+// Define globals
+//
+
+// set the base url 
+var oasisBaseUrl = Config.getDataDirectory() + '/oasis';
+// set the default finding aid to load
+var defaultFindingAid = 'hua07010.csv';
+var currentFindingAid = defaultFindingAid;
+// timeline variable
+var timeline = null;
+// the start dates bar chart
+var startChart = null;
+// the end dates bar chart
+var endChart = null;
+// the digital compoments table
+var digitalComponentsTable = null;
+
+//
+// Create the timeline and its associated visualizations of OASIS stats
+//
+function createTimelineVisualizations(data) {
+	// if there is a timeline instantiated, destroy it
+	if (_.isNull(timeline) == false) {
+		timeline.destroy();
+	}
+	var _items = (OasisParse.processData(true, data)) ? OasisParse.getItems() : null;
+	var temp_vis_items = _.values(_items);
+	var _vis_items = new Array();
+	// remove the items without dates from the vis items because we can't
+	// plot them on the timeline
+	temp_vis_items.forEach(function(item, index, array){
+		if ((item['start'] != '') && (item['end'] != '')) {
+			_vis_items.push(item);
+		}
+	});
+	
+	// get stats from the finding aid
+	var stats = OasisParse.getStatistics();
+			
+	// dom element where the timeline will be attached
+	var container = document.getElementById('timeline');
+	// create the items dataset
+	var vis_items = new vis.DataSet(_vis_items);
+	
+	//
+	// configure the timeline
+	//
+	// minimum zoom is about 1 month
+	var zoom_min = (1000 * 60 * 60 * 24) * 30;
+	// maximum zoom is about 100 years
+	var zoom_max = (1000 * 60 * 60 * 24) * (100 * 365); 
+	var options = {
+					minHeight: '500px',
+					zoomMin: zoom_min, 
+					zoomMax: zoom_max,
+					orientation: 'both'
+	};
+			
+	// create the timeline
+	timeline = new vis.Timeline(container, vis_items, options);
+	// add an event handler so that we can select items
+    timeline.on('select', function (properties) {
+    	var id = properties['items'][0];
+    	// if this is a valid item id...
+    	if (OasisParse.isValidItemId(id)) {
+    		// get html information about the item
+	    	var html = OasisParse.getItemHTML(id);
+	    	// set the item information in the dialog box
+	    	$('#item_dialog').html(html);
+	    	// open the dialog box (if it's not already open)
+	    	$('#item_dialog').dialog('open');
+    	}
+      });
+	
+	// move the timeline marker (red vertical line) to the first time in the finding aid
+    var nd = _vis_items[0]['start'];
+	timeline.moveTo(nd);
+
+	// 
+	// set values on the date picker tab of the control panel
+	// note that the timeline must exist in order to do this
+	//
+	
+	// get the earliest date in the finding aid
+	var min_m = moment(stats['earliest_date']);
+	// get the latest date in the finding aid
+	var max_m = moment(stats['latest_date']);
+	// initialize the datepicker
+	$('#datepicker').datepicker('option','changeMonth',true);
+	$('#datepicker').datepicker('option','changeYear',true);
+	$('#datepicker').datepicker('option','minDate', new Date(min_m.format()));
+	$('#datepicker').datepicker('option','maxDate', new Date(max_m.format()));
+
+	// set event handler on the datepicker button
+	$('#datepicker_button').on('click', function(event, ui) {
+		var date = $('#datepicker').datepicker('getDate');
+		$('#date_annotation').html(date);
+			timeline.moveTo(new Date(date)); 
+			timeline.setWindow({ start: new Date(date),
+								 end: new Date(date) });
+	});
+	
+	// 
+	// create the non-timeline visualizations and summaries
+	//
+	
+	// set stats overview tab
+	$('#stats_overview').html(OasisParse.getStatisticsTableHTML('full'));
+	
+	//
+	// populate the digital_components_table
+	//
+	var digital_components = stats['digital_objects_list'];
+
+	// estimate the width of the first column based upon the width of the document
+	var first_column_width = $(document).width() * .7;
+	// maximum title length
+	var tl = 200;
+	var dc = [];
+	digital_components.forEach(function(component){
+		var link = (component['urn']) ? '<a target="_blank" href="' + component['urn'] 
+																	+ '" title="' + component['title'] + '">'
+																	+ S(component['title']).truncate(tl).s + '</a>' : '';
+		var span = '<span class="spandc">' + link + '</span>';
+		dc.push([span, component['start'], component['end']]);
+	});
+	
+	digitalComponentsTable = $('#digital_components_table').removeAttr('width').dataTable({
+		'destroy':true, // reset the contents of the table each time the function is invoked
+		'data':dc,
+		'columns': [
+		            {'title':'Name'},
+		            {'title':'Start'},
+		            {'title':'End'}],
+		'lengthMenu':[[5,10,-1],[5,10,'All']],
+        'scrollY':        '200px',
+        'scrollX':        true,
+        'scrollCollapse': true,
+        'paging':         false,
+		'fixedColumns':true,
+		'columnDefs': [{'width': first_column_width, 'targets':0}]
+	});
+	// set defaults on the table
+    $.extend($.fn.dataTable.defaults, {
+        "bPaginate": true,
+        "bInfo": true,
+    });
+	// resize the table to fit the data in the columns
+	digitalComponentsTable.fnAdjustColumnSizing();
+	digitalComponentsTable.fnSort([[0, 'asc']]);
+	
+	//
+	// create the start and end data bar charts
+	//
+	
+	// create the start date chart
+	var start_data = stats['start_dist'];
+	// create the data for the chart
+	var schart_data = [];
+	var schart_ticks = [];
+	var keys = _.keys(start_data);
+	keys.forEach(function(key){
+		schart_data.push(start_data[key]);
+		schart_ticks.push(key);
+	});
+
+	// reinitialize start chart
+	if (_.isUndefined(startChart) == false) {
+		startChart = null;
+		$('#sc').empty();
+	}
+	
+	// enable jqplot plugins
+	$.jqplot.config.enablePlugins = true;
+	startChart = $.jqplot('sc', [schart_data], {
+		// get the title of the chart from the data
+		title: 'Start Date Distribution',
+		seriesDefaults: {
+			renderer:$.jqplot.BarRenderer,
+			// place the numerical values above each bar
+			pointLabels: {show: true}
+		},
+		axesDefaults: {
+			tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+			// put the labels on a 45 degree slant
+			// note: the labels are truncated to 45 charcters
+			tickOptions: {
+				angle: -45,
+				fontSize: '9pt'
+			}
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: schart_ticks
+			}
+		}
+	});
+     
+     //
+     // create the end date bar chart
+     //
+     
+     // get the end data
+	var end_data = stats['end_dist'];
+	// create the data for the chart
+	var echart_data = [];
+	var echart_ticks = [];
+	var keys = _.keys(end_data);
+	keys.forEach(function(key){
+		echart_data.push(start_data[key]);
+		echart_ticks.push(key);
+	});
+
+	// reinitialize end chart
+	if (_.isUndefined(endChart) == false) {
+		endChart = null;
+		$('#ec').empty();
+	}
+	
+	// enable jqplot plugins
+	$.jqplot.config.enablePlugins = true;
+	endChart = $.jqplot('ec', [echart_data], {
+		// get the title of the chart from the data
+		title: 'End Date Distribution',
+		seriesDefaults: {
+			renderer:$.jqplot.BarRenderer,
+			// place the numerical values above each bar
+			pointLabels: {show: true}
+		},
+		axesDefaults: {
+			tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+			// put the labels on a 45 degree slant
+			// note: the labels are truncated to 45 charcters
+			tickOptions: {
+				angle: -45,
+				fontSize: '9pt'
+			}
+		},
+		axes: {
+			xaxis: {
+				renderer: $.jqplot.CategoryAxisRenderer,
+				ticks: echart_ticks
+			}
+		}
+	});
+  
+     $('#ec').bind('jqplotDataClick', 
+         function (ev, seriesIndex, pointIndex, data) {
+             $('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+         }
+     );
+}
+
+//
+// Initialize the user interface
+//
+$(document).ready(function() {
+	// initialize the dialog boxes
+	$('#item_dialog').dialog();
+	$('#item_dialog').dialog('close');
+	$('#control_panel').dialog({minWidth: 400, minHeight: 490});
+	$('#control_panel').dialog('close');
+	
+	// initialize the select finding aid menu
+	$('#select_finding_aid').selectmenu();
+	$('#select_finding_aid').selectmenu('option', 'width', 400);
+	// add the options to the select menu
+	findingAidData.forEach(function(fa){
+		var opt = '<option value="' + fa['filename'] + '">' + fa['collection'] + '</option>';
+		$('#select_finding_aid').append(opt);
+	});
+	$('#select_finding_aid').selectmenu('refresh');
+	// when a finding aid is selected...
+	$('#select_finding_aid').on('selectmenuselect', function(event, ui){
+		// get the finding aid object
+		var fa = findingAidData[ui.item.index];
+		// set the heading on the profile panel
+		$('#finding_aid_title').html('<b>' + fa['library'] + ':</b> ' 
+										+'<a target="_blank" href="' + fa['fa'] 
+										+ '" title="' + fa['collection'] + '">'
+										+ fa['collection'] + '</a>');
+		// set the value of the current finding aid
+		currentFindingAid = ui.item.value;
+		$.ajax({
+			url: oasisBaseUrl + '/' + currentFindingAid,
+			dataType: 'text'
+		}).done(function(data){
+			// create the timeline and all associated visualizations
+			createTimelineVisualizations(data);
+		});
+	});
+	
+	// initialize the control panel button and dialog
+	$('#cp_button').button();
+	$('#cp_button').on('click', function(event, ui) {
+		 $('#control_panel').dialog('open');
+	 });
+	
+	// initialize the control panel tabs
+	$('#cp_tabs').tabs({height: 500});
+	
+	// initialize the profile toggle and panel
+	$('#pp_button').prop('checked', '');
+	// add event handler to the profile toggle
+	// to show/hide the profile panel
+	$('#pp_button').click(function(){
+		if ($('#pp_button').prop('checked')) {
+			$('#profile_panel').show();
+		} else {
+			$('#profile_panel').hide();
+		}
+	});
+	// initially hide the profile panel
+	$('#profile_panel').hide();
+	
+	// initialize the profile panel tabs
+	$('#pp_tabs').tabs();
+
+	// initialize the datepicker and datepicker button
+	$('#datepicker').datepicker();
+	$('#datepicker').val('');
+	$('#datepicker_button').button();
+	
+	// initialize the zoom select menu
+	$('#zoom').selectmenu();
+    
+	// set the event handler on the zoom menu selector
+	$('#zoom').on('selectmenuselect', function(event, ui) {
+		// get the date range for the current timeline window
+		var range = timeline.getWindow();
+		// create a start and end moment
+		var sm = moment(range.start);
+		var em = moment(range.end);
+		// get the difference between the start and end in milliseconds
+		var diff = em.diff(sm);
+		// create a duration for later use
+		var duration = moment.duration(diff);
+		// divide the difference in half
+		var half = diff / 2;
+		// add the half to the start moment to find the center moment
+		var cm = moment(sm+half);
+		switch(ui.item.value) {
+		case 'Month':
+			// create a new start 3 months earlier
+			var new_sm = moment(new Date(cm.format())).subtract(3, 'months');
+			// create a new end 3 months later
+			var new_em = moment(new Date(cm.format())).add(3, 'months');
+			if (_.isNull(timeline) == false) {
+					timeline.setWindow({
+				    start: new Date(new_sm.format()),
+				    end:   new Date(new_em.format())
+				});
+			}
+			break;
+		case 'Year':
+			// create a new start 1 year earlier
+			var new_sm = moment(new Date(cm.format())).subtract(1, 'year');
+			// create a new end 1 year later
+			var new_em = moment(new Date(cm.format())).add(1, 'year');
+			if (_.isNull(timeline) == false) {
+				timeline.setWindow({
+				    start: new Date(new_sm.format()),
+				    end:   new Date(new_em.format())
+				});	
+			}
+			break;
+		case 'Decade':
+			// create a new start 10 years earlier
+			var new_sm = moment(new Date(cm.format())).subtract(10, 'year');
+			// create a new end 10 years later
+			var new_em = moment(new Date(cm.format())).add(10, 'year');
+			if (_.isNull(timeline) == false) {
+				timeline.setWindow({
+				    start: new Date(new_sm.format()),
+				    end:   new Date(new_em.format())
+				});	
+			}
+			break;
+		case 'Century':
+			// create a new start 100 years earlier
+			var new_sm = moment(new Date(cm.format())).subtract(100, 'year');
+			// create a new end 100 years later
+			var new_em = moment(new Date(cm.format())).add(100, 'year');
+			if (_.isNull(timeline)) {
+				timeline.setWindow({
+				    start: new Date(new_sm.format()),
+				    end:   new Date(new_em.format())
+				});
+			}
+			break;
+			default:
+				// do nothing
+			break;
+		}
+	});
+	
+	// set up 
+	$('#pp_tabs').on("tabsactivate", function(event, ui){
+		var tab = $(ui.newTab).text();
+		switch (tab) {
+		case 'Overview':
+			break;
+		case 'Start Years':
+			startChart.replot();
+			break;
+		case 'End Years':
+			endChart.replot();
+			break;
+		case 'Digital Components':
+			digitalComponentsTable.fnDraw();
+			break;
+		default:
+			break;			
+		}
+	});
+});
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,214 @@
+/**
+ * Harvard Library Timeline
+ * 
+ * @author C. M. Boyd, ceilyn_boyd@harvard.edu
+ * @copyright Harvard University Library
+ * @created 21 February 2015
+ * @updated 3 March 2015
+ */
+
+/**
+ * Styling for generate HTML CSS classes
+ */
+body {
+	font-size: 10pt;
+	font-family:Lucida Sans,Lucida Grande,Arial,sans-serif;
+	color: #635F5D;
+  	height: auto;
+  	width: auto;
+  	background: #fcfcfc;
+  	background: #fff;
+  	border-style: solid;
+  	border-width: 1px;
+  	border-color: #E5F2E0;
+  	padding: 5px;
+}
+
+h1 {
+	margin-top: 0;
+	line-height:30px;
+	text-align: left;
+	color: #635F5D;
+}
+
+h2 {
+	text-align: left;
+	color: #8E8883;
+}
+
+h3 {
+	text-align: left;
+}
+
+h4 {
+	text-align: left;
+}
+
+h3.cp {
+	text-align: center;
+	font-weight: bold;
+}
+
+ul {
+	padding:0 0 0 15px; 
+	list-style : square;
+}
+
+a {
+	font-size: 10pt;
+	color: #5A1D1A;
+	text-decoration:none;
+}
+
+a:hover { text-decoration:underline; }
+
+p.center {
+	text-align: center;
+}
+
+p.right {
+	text-align: right;	
+}
+
+em {
+	font-weight: bold;
+	font-style: normal;
+}
+
+hr {
+	border:none;
+	border-top:1px dotted #000;
+}
+
+p.footer {
+	text-align: center;
+}
+
+.cna_left {
+	text-align: left;
+}
+
+.cna_center {
+	text-align: center;
+}
+
+/*
+ * Styling for HTML IDs
+ */
+
+#banner {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	background-color: #EFECEA;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #E5E2E0;
+}
+
+#navigation {
+	padding: 5px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #697070;
+	background-color:#F5F3F2;
+}
+
+#container {
+	background:	#fcfcfc;
+	height:		100%;
+	margin:		0 auto;
+	width:		100%;
+	max-width:	960px;
+	min-width:	700px;
+	height: 	1000px;
+	_width:		700px; /* min-width for IE6 */
+}
+
+#footer {
+	background-color: #EFECEA;
+	padding: 5px;
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-top-color: #E5E2E0; 
+}
+
+#illustration {
+	/*
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    */
+}
+
+#cna_overview_table {
+	width: 50%;
+	border-width: 1px;
+	border-style: solid;
+	padding: 5px;
+	margin: 10px;
+	border-collapse: collapse;
+}
+
+#cna_overview_table tr td {
+	border-width: 1px;
+	border-style: solid;
+	padding: 5px;
+}
+
+img {
+	border-width: 3px;
+    border-style: solid;
+    border-color: #666;
+}
+
+#lf_canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 400px;
+}
+
+#sf_canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+   	width: 600px;
+}
+
+#rf_canvas {
+    padding: 0;
+    margin: auto;
+    display: block;
+   	width: 600px;
+}
+
+
+#nsf_canvas {
+	padding: 0;
+	margin: auto;
+	display: block;
+	width: 90%;
+}
+
+#cna_map {
+	width: 500px;
+	height: 400px;
+}
+
+/** Override various jquery and jqplot classes */
+
+/* override the ui widget theme font size */
+.ui-widget {
+	font-size: 8pt;
+}
+
+/* override tooltip styling */
+.jqplot-highlighter-tooltip {
+	background: white;
+	margin: 5px;
+	overflow: visible;
+	overflow-x: visible;
+}
