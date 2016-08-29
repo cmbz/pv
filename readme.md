@@ -1,6 +1,6 @@
 # Readme #
 
-Welcome to the code and documents associated with the **Practical Data\* Visualization with JavaScript** talk given by Ceilyn Boyd (ceilyn_boyd@harvard.edu) on 4/25/2016.
+Welcome to the code and documents associated with the **Practical Data\* Visualization with JavaScript** talk given by Ceilyn Boyd (ceilyn_boyd@harvard.edu) on 4/25/2016. View a PDF of the talk here: https://github.com/cmbz/pv/blob/master/Practical_Data_Visualization_Boyd_04252016.pdf.
 
 ## About the Talk ##
 
